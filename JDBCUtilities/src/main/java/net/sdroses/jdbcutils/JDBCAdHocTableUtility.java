@@ -116,7 +116,8 @@ public class JDBCAdHocTableUtility {
 		jdbcTemplate.query(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement pstmt = buildPreparedStatementWithQueryParameters(con, sqlStatementWithValues.parameterData, sqlStatementWithValues.sql, null);
+				PreparedStatement pstmt = con.prepareStatement(sqlStatementWithValues.sql);				
+				setQueryParameters(sqlStatementWithValues.parameterData, pstmt);
 				return pstmt;
 			}
 		}, rs -> {
@@ -574,27 +575,6 @@ public class JDBCAdHocTableUtility {
 		return row;
 	}
 
-	/**
-	 * Prepare and set all parameters in the included statement.
-	 *  
-	 * @param con {@link java.sql.Connection}
-	 * @param parameterData List of {@link JDBCColumnMetaDataWithValue} which will be used to set the parameters by type
-	 * @param sqlStatement SQL Statement to be prepared
-	 * @param keys Optional array of key field names, used with inserts to retrieve generated keys
-	 * @return @link java.sql.PreparedStatement}
-	 * 
-	 * @throws SQLException
-	 */
-	private PreparedStatement buildPreparedStatementWithQueryParameters(Connection con, ArrayList<JDBCColumnMetaDataWithValue> parameterData, String sqlStatement, String[] keys)
-			throws SQLException {
-		// Prepare the statement, including keys when submitted, otherwise use an empty Sting array to specify no keys. 
-		PreparedStatement pstmt = con.prepareStatement(sqlStatement, keys != null ? keys : new String[0]);
-		
-		setQueryParameters(parameterData, pstmt);
-		
-		return pstmt;
-	}
-	
 	/**
 	 * Sets the parameters in a PreparedStatement object 
 	 * @param parameterData List of {@link JDBCColumnMetaDataWithValue}
