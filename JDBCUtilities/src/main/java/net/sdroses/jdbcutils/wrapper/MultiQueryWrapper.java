@@ -1,7 +1,7 @@
 /**
  * Created on Aug 30, 2024
  */
-package net.sdroses.jdbcutils;
+package net.sdroses.jdbcutils.wrapper;
 
 import java.util.ArrayList;
 

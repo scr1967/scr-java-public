@@ -20,6 +20,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import net.sdroses.jdbcutils.order.OrderByClause;
+import net.sdroses.jdbcutils.order.OrderByDirection;
+import net.sdroses.jdbcutils.wrapper.FilterWrapper;
+import net.sdroses.jdbcutils.wrapper.MultiQueryWrapper;
+import net.sdroses.jdbcutils.wrapper.PaginationWrapper;
+
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -27,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @EnableAutoConfiguration
 @SpringBootTest
-public class JDBCAdHocTesting {
+public class JDBCAdHocTests {
 
 	@Autowired private DataSource datasource;
 	@Autowired private JdbcTemplate jdbcTemplate;

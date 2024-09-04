@@ -26,6 +26,9 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.sdroses.jdbcutils.order.OrderBy;
+import net.sdroses.jdbcutils.order.OrderByClause;
+import net.sdroses.jdbcutils.wrapper.QueryWrapper;
 
 /**
  * Utility class for generating and/or executing simple selects, inserts, updates, and deletes on a table using JdbcTemplate
