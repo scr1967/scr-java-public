@@ -1,7 +1,7 @@
 /**
  * Created on Aug 30, 2024
  */
-package net.sdroses.jdbcutils;
+package net.sdroses.jdbcutils.order;
 
 /**
  * Enum representing the Ascending and Descending states for an ORDER BY clause

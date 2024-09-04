@@ -1,7 +1,7 @@
 /**
  * Created on Aug 30, 2024
  */
-package net.sdroses.jdbcutils;
+package net.sdroses.jdbcutils.order;
 
 /**
  * This represents an entry in an SQL ORDER BY clause

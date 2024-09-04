@@ -1,7 +1,7 @@
 /**
  * Created on Aug 30, 2024
  */
-package net.sdroses.jdbcutils;
+package net.sdroses.jdbcutils.wrapper;
 
 /**
  * <p>This interface is used for wrapping an SQL query to turn it into a sub-query</p>

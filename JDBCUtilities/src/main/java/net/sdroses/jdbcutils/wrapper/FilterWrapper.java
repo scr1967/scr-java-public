@@ -1,7 +1,7 @@
 /**
  * Created on Aug 30, 2024
  */
-package net.sdroses.jdbcutils;
+package net.sdroses.jdbcutils.wrapper;
 
 /**
  * <p>Add a filter (where clause) to the end of an existing query, 
