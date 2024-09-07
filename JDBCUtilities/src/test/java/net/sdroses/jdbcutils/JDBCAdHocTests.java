@@ -182,7 +182,7 @@ public class JDBCAdHocTests {
 		String testQuery = adHocUtility.buildSelectStatement(null, orderBy, null, null);
 		logger.debug(testQuery);
 		
-		assertEquals(testQuery, "select * from RANDOM_NAMES order by LAST asc");
+		assertEquals(testQuery, "select * from `RANDOM_NAMES` order by LAST asc");
 	}
 	
 	@Test
@@ -224,7 +224,7 @@ public class JDBCAdHocTests {
 		String testQuery = adHocUtility.buildSelectStatement(null, null, filter, null);
 		logger.debug(testQuery);
 
-		assertEquals(testQuery, "select z.* from (select * from RANDOM_NAMES) z where LAST like 'Ander%'");
+		assertEquals(testQuery, "select z.* from (select * from `RANDOM_NAMES`) z where LAST like 'Ander%'");
 	}
 
 	@Test
@@ -253,7 +253,7 @@ public class JDBCAdHocTests {
 		String testQuery = adHocUtility.buildSelectStatement(null, null, pager, null);
 		logger.debug(testQuery);
 
-		assertEquals(testQuery, "select z.* from (select * from RANDOM_NAMES) z limit 100 offset 0");		
+		assertEquals(testQuery, "select z.* from (select * from `RANDOM_NAMES`) z limit 100 offset 0");		
 	}
 
 	@Test
@@ -265,7 +265,7 @@ public class JDBCAdHocTests {
 		String testQuery = adHocUtility.buildSelectStatement(null, null, pager, null);
 		logger.debug(testQuery);
 
-		assertEquals(testQuery, "select z.*, ROW_NUMBER() as xxx_rownumber_xxx from (select * from RANDOM_NAMES) z where xxx_rownumber_xxx between 1 and 100");		
+		assertEquals(testQuery, "select z.*, ROW_NUMBER() as xxx_rownumber_xxx from (select * from `RANDOM_NAMES`) z where xxx_rownumber_xxx between 1 and 100");		
 	}
 
 	@Test
@@ -308,7 +308,7 @@ public class JDBCAdHocTests {
 		String testQuery = adHocUtility.buildSelectStatement(null, null, multiWrapper, null);
 		logger.debug(testQuery);
 
-		assertEquals(testQuery, "select z2.* from (select z1.* from (select * from RANDOM_NAMES) z1 where LAST like 'B%') z2 limit 25 offset 0");
+		assertEquals(testQuery, "select z2.* from (select z1.* from (select * from `RANDOM_NAMES`) z1 where LAST like 'B%') z2 limit 25 offset 0");
 	}//98
 
 	@Test
