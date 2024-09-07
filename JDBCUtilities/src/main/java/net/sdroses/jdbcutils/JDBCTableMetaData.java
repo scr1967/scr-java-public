@@ -150,17 +150,36 @@ public class JDBCTableMetaData {
 	 */
 	public String getFullTableName() {
 		StringBuilder sb = new StringBuilder();
-		
 		if (this.catalog != null) {
 			sb.append(this.catalog);
 			sb.append(".");
 		}
-		if (this.catalog != null) {
+		if (this.schema != null) {
 			sb.append(this.schema);
 			sb.append(".");
 		}
+		sb.append("`");
 		sb.append(this.tableName);
+		sb.append("`");
 		
+		return sb.toString();
+	}
+	
+	/**
+	 * Outputs a partial table description as a String including columns
+	 */
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.getFullTableName());
+		sb.append(" (");
+		boolean first = true;
+		for (JDBCColumnMetaData columnMetaData : this.getColumnsInOrder()) {
+			if (!first) {
+				sb.append(", ");
+			}
+			sb.append(columnMetaData.toString());
+		}
+		sb.append(")");
 		return sb.toString();
 	}
 }
