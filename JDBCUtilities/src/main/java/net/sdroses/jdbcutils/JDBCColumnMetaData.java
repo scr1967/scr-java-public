@@ -4,6 +4,7 @@
 package net.sdroses.jdbcutils;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import lombok.Getter;
@@ -174,7 +175,26 @@ public class JDBCColumnMetaData {
     	isAutoIncrement = rs.getString(IS_AUTOINCREMENT);
     	isGeneratedColumn = rs.getString(IS_GENERATEDCOLUMN);
     }
-    
+
+    public JDBCColumnMetaData(ResultSetMetaData rsmd, int column) {
+    	try {
+			columnName = rsmd.getColumnName(column);
+			dataType = rsmd.getColumnType(column);
+			typeName = rsmd.getColumnTypeName(column);
+			columnSize = rsmd.getPrecision(column);
+			decimalDigits = rsmd.getScale(column);
+			
+			nullable = rsmd.isNullable(column);
+			
+			position = column;
+			scopeCatalog = rsmd.getCatalogName(column);
+			scopeSchema = rsmd.getSchemaName(column);
+			scopeTable = rsmd.getTableName(column);
+			isAutoIncrement = rsmd.isAutoIncrement(column) ? "YES" : "NO";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }
     /**
      * Return the name, type and column size as a String
      */
