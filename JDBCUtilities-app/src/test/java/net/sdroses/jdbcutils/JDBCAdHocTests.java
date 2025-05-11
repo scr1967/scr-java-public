@@ -3,13 +3,11 @@
  */
 package net.sdroses.jdbcutils;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
+import net.sdroses.jdbcutils.order.OrderByClause;
+import net.sdroses.jdbcutils.order.OrderByDirection;
+import net.sdroses.jdbcutils.wrapper.FilterWrapper;
+import net.sdroses.jdbcutils.wrapper.MultiQueryWrapper;
+import net.sdroses.jdbcutils.wrapper.PaginationWrapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -20,16 +18,13 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import net.sdroses.jdbcutils.order.OrderByClause;
-import net.sdroses.jdbcutils.order.OrderByDirection;
-import net.sdroses.jdbcutils.wrapper.FilterWrapper;
-import net.sdroses.jdbcutils.wrapper.MultiQueryWrapper;
-import net.sdroses.jdbcutils.wrapper.PaginationWrapper;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @EnableAutoConfiguration
 @SpringBootTest
